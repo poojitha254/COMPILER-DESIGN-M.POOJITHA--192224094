@@ -1,0 +1,28 @@
+%{
+int tags=0;
+%}
+%%
+"<"[^>]*">" {tags++; printf("%s",yytext);}
+.|\n { }
+%%
+int yywrap(){
+return 1;
+}
+int main(){
+FILE *f;
+char file[20];
+printf("enter file name:");
+scanf("%s",file);
+f=fopen(file,"r");
+yyin=f;
+yylex();
+printf("no of tags:%d",tags);
+fclose(yyin);
+}
+# input
+  <html>
+<body>
+<h1>My First Heading</h1>
+<p>My first paragraph.</p>
+</body>
+</html>
