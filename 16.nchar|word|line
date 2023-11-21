@@ -1,0 +1,36 @@
+%{
+#include<stdio.h>
+int nline=0,nchar=0,nwords=0;
+%}
+%%
+[\n] {nline++;nchar++;}
+[^\t\n]+ {nwords++; nchar+=yyleng;}
+.|\n {nchar++;}
+%%
+int yywrap(){
+return 1;
+}
+int main(){
+FILE *f;
+char file[20];
+printf("enter a file name:");
+scanf("%s",file);
+f=fopen(file,"r");
+yyin=f;
+yylex();
+printf("no of characters:%d",nchar);
+printf("no of words:%d",nwords);
+printf("no of nline:%d",nline);
+fclose(yyin);
+}
+#input
+#include <stdio.h>
+ int main() 
+ {    
+      int number1, number2, sum;
+ printf("Enter two integers: ");
+ scanf("%d %d", &number1, &number2);
+ sum = number1 + number2;      
+      printf("%d + %d = %d", number1, number2, sum);
+  return 0;
+ }
