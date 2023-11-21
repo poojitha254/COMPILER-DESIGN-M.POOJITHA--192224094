@@ -1,0 +1,32 @@
+%{
+#include<stdio.h>
+int nmacro=0,nhead=0;
+%}
+%%
+^#include {nhead++;}
+^#define  {nmacro++; }
+.|\n { }
+%%
+int yywrap(){
+return 1;
+}
+int main(){
+FILE *f;
+char file[20];
+printf("enter a file name:");
+scanf("%s",file);
+f=fopen(file,"r");
+yyin=f;
+yylex();
+printf("no of macro:%d",nmacro);
+printf("no of headera:%d",nhead);
+fclose(yyin);
+}
+#input
+#define PI 3.14  
+#include<stdio.h> #include<conio.h>
+ void main()
+{
+            int a,b,c = 30;
+printf("hello");
+}
