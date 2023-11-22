@@ -1,0 +1,26 @@
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+	char str[]="a+b";
+	int n=strlen(str);
+	int i;
+	for(i=0;i<n;i++)
+	{
+		if(str[i]>='a'&& str[i]<='z')
+		{
+			continue;
+		}
+		else if(str[i]=='+'||str[i]=='-'||str[i]=='*')
+		{
+			if(str[i]=='+')
+			printf("addition operator");
+			else if(str[i]=='-')
+			printf("subtraction operator");
+			else if(str[i]=='*')
+			printf("multiplication operator");
+		}
+	}
+	return 0;
+	
+}
