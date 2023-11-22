@@ -1,0 +1,21 @@
+%{
+#include<stdio.h>
+%}
+%%
+[0-3][0-9]{9} {printf("%s is a valid number",yytext);}
+.|\n {printf("invalid");}
+%%
+int yywrap(){
+return 1;
+}
+int main(){
+FILE *f;
+char file[20];
+printf("enter file name:");
+scanf("%s",file);
+yyin=fopen(file,"r");
+yylex();
+fclose(yyin);
+}
+#input
+89999987
