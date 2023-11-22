@@ -1,0 +1,25 @@
+%{
+#include<stdio.h>
+%}
+%%
+^(a|e|i|o|u|A|E|I|O|U)+[a-zA-Z]* {printf("%s",yytext);}
+.|\n { }
+%%
+int yywrap(){
+return 1;
+}
+int main(){
+FILE *f;
+char file[20];
+printf("enter file name:");
+scanf("%s",file);
+f=fopen(file,"r");
+yyin=f;
+yylex();
+fclose(yyin);
+}
+#input
+hello
+are
+u going
+to see rainbow
